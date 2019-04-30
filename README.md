@@ -36,7 +36,15 @@ $('#example').DataTable({
     'treeGrid': {
         'left': 10,
         'expandIcon': '<span>+</span>',
-        'collapseIcon': '<span>-</span>'
+        'collapseIcon': '<span>-</span>',
+        'trDataIdName' : 'item-id',
+        'trDataPidName' : 'item-pid'
+    },
+    createdRow : function(row, data) {
+        $(row).attr('item-id', data.id);
+        if (+data.pid) {
+            $(row).attr('item-pid', data.pid);
+        }
     }
 });
 ```
